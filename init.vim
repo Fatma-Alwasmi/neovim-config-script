@@ -21,15 +21,18 @@ Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/preservim/tagbar'
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'} 
-Plug 'https://github.com/folke/tokyonight.nvim' " theme
-Plug 'https://github.com/Mofiqul/vscode.nvim' " theme
-Plug 'https://github.com/projekt0n/github-nvim-theme' " theme 
+"Plug 'https://github.com/folke/tokyonight.nvim' " theme
+"Plug 'https://github.com/Mofiqul/vscode.nvim' " theme
+"Plug 'https://github.com/projekt0n/github-nvim-theme' " theme 
 Plug 'https://github.com/romgrk/barbar.nvim' " Tab bar
 Plug 'https://github.com/nvim-tree/nvim-web-devicons' "  for file icons
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " highlight
-Plug 'https://github.com/Mofiqul/dracula.nvim'
+"Plug 'https://github.com/Mofiqul/dracula.nvim'
 Plug 'https://github.com/bluz71/vim-moonfly-colors' "theme
-Plug 'https://github.com/nvimdev/dashboard-nvim'
+"Plug 'https://github.com/nvimdev/dashboard-nvim'
+"Plug 'https://github.com/nvim-telescope/telescope.nvim'
+Plug 'https://github.com/mhinz/vim-startify'
+
 
 
 
@@ -41,6 +44,9 @@ call plug#end()
 "colorscheme vscode
 "colorscheme github_dark
 colorscheme moonfly
+
+
+
 
 
 " Tagbar
@@ -67,17 +73,6 @@ nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 nnoremap <silent>    <A-<> <Cmd>BufferMovePrevious<CR>
 nnoremap <silent>    <A->> <Cmd>BufferMoveNext<CR>
 
-" Goto buffer in position...
-nnoremap <silent>    <A-1> <Cmd>BufferGoto 1<CR>
-nnoremap <silent>    <A-2> <Cmd>BufferGoto 2<CR>
-nnoremap <silent>    <A-3> <Cmd>BufferGoto 3<CR>
-nnoremap <silent>    <A-4> <Cmd>BufferGoto 4<CR>
-nnoremap <silent>    <A-5> <Cmd>BufferGoto 5<CR>
-nnoremap <silent>    <A-6> <Cmd>BufferGoto 6<CR>
-nnoremap <silent>    <A-7> <Cmd>BufferGoto 7<CR>
-nnoremap <silent>    <A-8> <Cmd>BufferGoto 8<CR>
-nnoremap <silent>    <A-9> <Cmd>BufferGoto 9<CR>
-nnoremap <silent>    <A-0> <Cmd>BufferLast<CR>
 
 " Pin/unpin buffer
 nnoremap <silent>    <A-p> <Cmd>BufferPin<CR>
@@ -147,9 +142,47 @@ highlight CocInfoSign ctermfg=green guifg=green
 
 "*******************Highligt config end*************************
 
-" Open terminal in a horizontal split
-nnoremap <silent> <C-a> :belowright split<CR>:terminal<CR>i 
-autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif
+let g:dashboard_default_executive = 'telescope'
+
+"***********************************************************************************
+
+
+let g:startify_custom_header = [
+	\ '                                                              ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗',
+	\ '                                                              ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║',
+	\ '                                                              ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║',
+	\ '                                                              ██║╚██╗██║██╔══╝  ██║   ██║██║   ██║██║██║╚██╔╝██║',
+	\ '                                                              ██║ ╚████║███████╗╚██████╔╝╚██████╔╝██║██║ ╚═╝ ██║',
+	\ '                                                              ╚═╝  ╚═══╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝     ╚═╝'
+	\ ]
+
+
+let g:startify_align_center = 50 
+
+let g:startify_lists = [
+	 \ { 'type': 'files',     'header': ['                                                Recent Files']       },
+      \ { 'type': 'sessions',  'header': ['                                                 Sessions']           },
+      \ { 'type': 'bookmarks', 'header': ['                                                 Bookmarks']          },
+      \ { 'type': 'commands',  'header': ['                                                 Useful Commands']    }
+      \ ]
+
+
+let g:startify_bookmarks = [
+      \ { 'c': '~/.config/nvim/init.vim' },
+      \ { 'd': '~/Documents' },
+      \ { 'p': '~/Projects' }
+      \ ]
+
+
+let g:startify_commands = [
+      \ { 'name': 'Update Plugins', 'command': 'PlugUpdate' },
+      \ { 'name': 'Edit Config', 'command': ':e ~/.config/nvim/init.vim' }
+      \ ]
+
+let g:startify_session_dir = '~/.config/nvim/sessions'
+let g:startify_custom_footer = ['Powered by Neovim. Happy Coding!']
+
+let g:startify_padding_left = 50
 
 
 
