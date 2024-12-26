@@ -29,11 +29,8 @@ Plug 'https://github.com/nvim-tree/nvim-web-devicons' "  for file icons
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " highlight
 "Plug 'https://github.com/Mofiqul/dracula.nvim'
 Plug 'https://github.com/bluz71/vim-moonfly-colors' "theme
-"Plug 'https://github.com/nvimdev/dashboard-nvim'
-"Plug 'https://github.com/nvim-telescope/telescope.nvim'
 Plug 'https://github.com/mhinz/vim-startify'
-
-
+Plug 'https://github.com/wfxr/minimap.vim'
 
 
 
@@ -157,7 +154,6 @@ let g:startify_custom_header = [
 	\ ]
 
 
-let g:startify_align_center = 50 
 
 let g:startify_lists = [
 	 \ { 'type': 'files',     'header': ['                                                Recent Files']       },
@@ -183,6 +179,10 @@ let g:startify_session_dir = '~/.config/nvim/sessions'
 let g:startify_custom_footer = ['Powered by Neovim. Happy Coding!']
 
 let g:startify_padding_left = 50
+
+let g:minimap_width = 20
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
 
 
 
